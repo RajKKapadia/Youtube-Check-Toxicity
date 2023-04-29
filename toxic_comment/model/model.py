@@ -1,5 +1,6 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch.nn as nn
+import torch
 
 from toxic_comment.logger import logging
 
@@ -9,6 +10,7 @@ tokenizer = AutoTokenizer.from_pretrained(
     pretrained_model_name_or_path='bert_model/')
 model = AutoModelForSequenceClassification.from_pretrained(
     pretrained_model_name_or_path='bert_model/')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = model.to('cuda')
 
 
