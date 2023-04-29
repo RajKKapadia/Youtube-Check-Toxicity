@@ -11,7 +11,7 @@ tokenizer = AutoTokenizer.from_pretrained(
 model = AutoModelForSequenceClassification.from_pretrained(
     pretrained_model_name_or_path='bert_model/')
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = model.to('cuda')
+model = model.to(device)
 
 
 def check_text_toxicity(text) -> dict:
