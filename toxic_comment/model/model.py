@@ -25,7 +25,7 @@ def check_text_toxicity(text) -> dict:
     '''
     try:
         logger.info('Started checking toxicity...')
-        inputs = tokenizer(text, return_tensors='pt').to('cuda')
+        inputs = tokenizer(text, return_tensors='pt').to(device)
         outputs = model(**inputs)
         sigmoid = nn.Sigmoid()
         probabilities = sigmoid(outputs.logits)
